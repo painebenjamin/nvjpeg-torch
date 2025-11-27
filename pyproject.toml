@@ -1,0 +1,66 @@
+[build-system]
+requires = [
+    "setuptools>=64",
+    "wheel",
+    "numpy>=1.17",
+    "torch>=2.0",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nvjpeg-torch"
+# Version is set dynamically in setup.py based on CUDA and torch version (e.g., 0.1.0+cu124torch2.5)
+dynamic = ["version"]
+description = "Python interface for nvjpeg with PyTorch support. Encode/Decode Jpeg with Nvidia GPU Hardware Acceleration."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.8"
+authors = [
+    { name = "Usingnet", email = "developer@usingnet.com" },
+]
+keywords = [
+    "nvjpeg-torch",
+    "nvjpeg",
+    "pytorch",
+    "torch",
+    "jpeg",
+    "jpg",
+    "encode",
+    "decode",
+    "gpu",
+    "nvidia",
+    "cuda",
+    "hardware acceleration",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: Microsoft :: Windows",
+    "Environment :: GPU :: NVIDIA CUDA",
+    "Topic :: Multimedia :: Graphics :: Graphics Conversion",
+]
+dependencies = [
+    "numpy>=1.17",
+    "torch>=2.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/UsingNet/nvjpeg-python"
+Repository = "https://github.com/UsingNet/nvjpeg-python"
+Issues = "https://github.com/UsingNet/nvjpeg-python/issues"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["nvjpeg", "nvjpeg_libs*"]
+
+[tool.setuptools.package-data]
+"nvjpeg_libs" = ["*.so*", "*.dll"]

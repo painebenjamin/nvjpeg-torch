@@ -1,0 +1,13 @@
+include README.md
+include LICENSE
+include Makefile
+include pyproject.toml
+include bundle_libs.py
+
+recursive-include include *.hpp *.h
+recursive-include src/x86 *.cpp *.hpp *.h
+
+global-exclude *.pyc
+global-exclude __pycache__
+global-exclude *.so
+global-exclude .git*
