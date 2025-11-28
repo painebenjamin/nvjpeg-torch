@@ -56,12 +56,12 @@ This creates a wheel in `dist/` that includes the necessary CUDA runtime librari
 
 ## Usage
 
-### Initialize NvJpeg
+### Initialize NvJPEG
 
 ```python
-from nvjpeg import NvJpeg
+from nvjpeg import NvJPEG
 
-nj = NvJpeg()
+nj = NvJPEG()
 ```
 
 ### Read JPEG File to NumPy Array

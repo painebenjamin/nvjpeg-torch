@@ -16,7 +16,7 @@ sys.path.insert(0, project_root)
 for lib in glob.glob(os.path.join(project_root, "build/lib.*")):
     sys.path.insert(0, lib)
 
-from nvjpeg import NvJpeg
+from nvjpeg import NvJPEG
 
 # Try to import cv2 for visual comparison (optional)
 try:
@@ -30,7 +30,7 @@ except ImportError:
 def test_numpy_encode_decode():
     """Test basic numpy array encoding and decoding."""
     print("Testing numpy encode/decode...")
-    nj = NvJpeg()
+    nj = NvJPEG()
     
     image_file = os.path.join(os.path.dirname(__file__), "test-image", "test.jpg")
     
@@ -57,7 +57,7 @@ def test_numpy_encode_decode():
 def test_torch_tensor_uint8():
     """Test PyTorch tensor encoding with uint8 CHW RGB format."""
     print("Testing torch tensor (uint8 CHW RGB)...")
-    nj = NvJpeg()
+    nj = NvJPEG()
     
     image_file = os.path.join(os.path.dirname(__file__), "test-image", "test.jpg")
     
@@ -92,7 +92,7 @@ def test_torch_tensor_uint8():
 def test_torch_tensor_float_0_1():
     """Test PyTorch tensor encoding with float [0, 1] CHW RGB format."""
     print("Testing torch tensor (float [0,1] CHW RGB)...")
-    nj = NvJpeg()
+    nj = NvJPEG()
     
     image_file = os.path.join(os.path.dirname(__file__), "test-image", "test.jpg")
     
@@ -127,7 +127,7 @@ def test_torch_tensor_float_0_1():
 def test_torch_tensor_float_neg1_1():
     """Test PyTorch tensor encoding with float [-1, 1] CHW RGB format."""
     print("Testing torch tensor (float [-1,1] CHW RGB)...")
-    nj = NvJpeg()
+    nj = NvJPEG()
     
     image_file = os.path.join(os.path.dirname(__file__), "test-image", "test.jpg")
     
@@ -163,7 +163,7 @@ def test_torch_tensor_float_neg1_1():
 def test_torch_tensor_4d_batch():
     """Test PyTorch tensor encoding with 4D NCHW RGB format (batch size 1)."""
     print("Testing torch tensor (4D NCHW RGB with N=1)...")
-    nj = NvJpeg()
+    nj = NvJPEG()
     
     image_file = os.path.join(os.path.dirname(__file__), "test-image", "test.jpg")
     
@@ -192,7 +192,7 @@ def test_torch_tensor_4d_batch():
 def test_torch_write():
     """Test writing torch tensor directly to file."""
     print("Testing torch tensor write to file...")
-    nj = NvJpeg()
+    nj = NvJPEG()
     
     image_file = os.path.join(os.path.dirname(__file__), "test-image", "test.jpg")
     output_file = os.path.join(os.path.dirname(__file__), "out", "torch_output.jpg")
@@ -223,7 +223,7 @@ def test_torch_write():
 def test_read_write():
     """Test read and write convenience functions."""
     print("Testing read/write functions...")
-    nj = NvJpeg()
+    nj = NvJPEG()
     
     image_file = os.path.join(os.path.dirname(__file__), "test-image", "test.jpg")
     output_file = os.path.join(os.path.dirname(__file__), "out", "test_output.jpg")
@@ -244,7 +244,7 @@ def test_read_write():
 def test_quality_parameter():
     """Test different quality settings."""
     print("Testing quality parameter...")
-    nj = NvJpeg()
+    nj = NvJPEG()
     
     image_file = os.path.join(os.path.dirname(__file__), "test-image", "test.jpg")
     
@@ -276,7 +276,7 @@ def visual_comparison():
         return
     
     print("Running visual comparison...")
-    nj = NvJpeg()
+    nj = NvJPEG()
     
     image_file = os.path.join(os.path.dirname(__file__), "test-image", "test.jpg")
     
@@ -289,7 +289,7 @@ def visual_comparison():
     cv_np = cv2.imread(image_file)
     
     # Display
-    cv2.imshow("NvJpeg Decode Image", nj_np)
+    cv2.imshow("NvJPEG Decode Image", nj_np)
     cv2.imshow("OpenCV Decode Image", cv_np)
     print("Press any key to continue...")
     cv2.waitKey(0)
@@ -307,7 +307,7 @@ def run_speed_tests():
     print("=" * 60)
     print()
     
-    nj = NvJpeg()
+    nj = NvJPEG()
     
     # Test shapes: (height, width)
     shapes = [

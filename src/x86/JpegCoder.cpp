@@ -85,6 +85,25 @@ void JpegCoder::ensureThread(long threadIdent){
     ;
 }
 
+void JpegCoder::getImageInfo(const unsigned char* jpegData, size_t length, int* width, int* height, int* nComponent, JpegCoderChromaSubsampling* subsampling){
+    nvjpegHandle_t nv_handle = JPEGCODER_GLOBAL_CONTEXT->nv_handle;
+    
+    int widths[NVJPEG_MAX_COMPONENT];
+    int heights[NVJPEG_MAX_COMPONENT];
+    int nComp = 0;
+    nvjpegChromaSubsampling_t nvSubsampling;
+    
+    nvjpegStatus_t status = nvjpegGetImageInfo(nv_handle, jpegData, length, &nComp, &nvSubsampling, widths, heights);
+    if (NVJPEG_STATUS_SUCCESS != status){
+        throw JpegCoderError(status, "NvJpeg GetImageInfo Error");
+    }
+    
+    *width = widths[0];
+    *height = heights[0];
+    *nComponent = nComp;
+    *subsampling = ChromaSubsampling_Covert_NvJpegToJpegCoder(nvSubsampling);
+}
+
 JpegCoderImage* JpegCoder::decode(const unsigned char* jpegData, size_t length){
     nvjpegHandle_t nv_handle = JPEGCODER_GLOBAL_CONTEXT->nv_handle;
     nvjpegJpegState_t nv_statue = JPEGCODER_GLOBAL_CONTEXT->nv_statue;

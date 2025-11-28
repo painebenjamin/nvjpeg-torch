@@ -83,6 +83,7 @@ public:
     JpegCoder();
     ~JpegCoder();
     void ensureThread(long threadIdent);
+    void getImageInfo(const unsigned char* jpegData, size_t length, int* width, int* height, int* nComponent, JpegCoderChromaSubsampling* subsampling);
     JpegCoderImage* decode(const unsigned char* jpegData, size_t length);
     JpegCoderBytes* encode(JpegCoderImage* img, int quality);
     static void cleanUpEnv();

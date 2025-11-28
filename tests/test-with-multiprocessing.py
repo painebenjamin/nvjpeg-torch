@@ -10,8 +10,8 @@ from concurrent.futures import ThreadPoolExecutor, wait, ALL_COMPLETED, FIRST_CO
 for lib in glob.glob(os.path.join(os.path.dirname(__file__), "../build/lib.*")):
     sys.path.append(lib)
 
-from nvjpeg import NvJpeg
-nj = NvJpeg()
+from nvjpeg import NvJPEG
+nj = NvJPEG()
 
 
 image_dir = os.path.join(os.path.dirname(__file__), "test-image")
@@ -42,7 +42,7 @@ def test_process_global(id):
 
 def test_process_in_threads(id):
     global success_times
-    nj = NvJpeg()
+    nj = NvJPEG()
     for run_time in range(id+1):
         # print("Process %d run time %d" %(id, run_time))
         fp = open(os.path.join(image_dir, "%d.jpg" % (id%10,)), "rb")
